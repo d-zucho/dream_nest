@@ -5,8 +5,8 @@ const RegisterPage = () => {
   return (
     <section className='register'>
       <div className='register_content'>
-        <form className='register_form'>
-          <h1 className='register_form_title'>REGISTER</h1>
+        <form className='register_content_form'>
+          <h1 className='register_form_title'>Register</h1>
           <input
             type='text'
             placeholder='First Name'
@@ -14,7 +14,7 @@ const RegisterPage = () => {
             required
           />
           <input type='text' placeholder='Last Name' name='lastName' required />
-          <input type='email' placeholder='email' name='email' required />
+          <input type='email' placeholder='Email' name='email' required />
           <input
             type='password'
             placeholder='Password'
@@ -40,8 +40,8 @@ const RegisterPage = () => {
             Upload Profile Photo
           </label>
           <button type='submit'>REGISTER</button>
+          <a href='/login'>Already have an account? Log in Here</a>
         </form>
-        <a href='/login'>Already have an account? Log in Here</a>
       </div>
     </section>
   )

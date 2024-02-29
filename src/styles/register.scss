@@ -1,74 +1,105 @@
+@import './variables.scss';
+@import './breakpoints.scss';
+
+h1 {
+  font-size: 40px;
+  color: white;
+  text-align: center;
+  text-transform: titlecase;
+}
+
 .register {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: url('../../public/assets/register.jpg');
-}
+  background: url('../../public/assets/register.jpg') center;
+  background-size: cover;
 
-.register_content {
-  width: clamp(350px, 50%, 600px);
-}
+  &_content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 40%;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
 
-h1 {
-  color: #fff;
-  text-align: center;
-  margin-bottom: 2rem;
-}
+    @include lg {
+      width: 60%;
+    }
 
-.register_form {
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  padding: 1.5rem;
-  background-color: rgba(25, 25, 25, 0.95);
-  border-radius: 20px;
+    @include mm {
+      width: 80%;
+    }
 
-  input[type='text'],
-  input[type='password'],
-  input[type='email'] {
-    margin-bottom: 20px;
-    height: 2rem;
-    border: none;
-    outline: none;
-    border-radius: 4px;
-    padding-left: 0.5rem;
-    background: transparent;
-    border-bottom: 2px solid #3d3d3d;
-    color: #fff;
+    &_form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+
+      input {
+        width: 100%;
+        padding: 7px 15px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        outline: none;
+        text-align: center;
+        color: white;
+
+        input:not(:placeholder-shown):focus {
+          background: transparent; /* or background: none; */
+        }
+
+        &::placeholder {
+          color: white;
+        }
+      }
+
+      label {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 9px;
+        cursor: pointer;
+        color: white;
+        font-size: 14px;
+
+        img {
+          width: 25px;
+        }
+      }
+
+      button {
+        margin-top: 15px;
+
+        @include buttonStyle;
+        width: 80%;
+        @include sm {
+          width: 100%;
+        }
+
+        &:hover {
+          box-shadow: 0 0 10px 3px rgba(255, 255, 255);
+        }
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+      font-size: 13px;
+      margin-top: 10px;
+      text-align: center;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
-
-  img {
-    display: block;
-    width: 25px;
-    margin: 0.5rem auto;
-  }
-  label {
-    color: #fff;
-    text-align: center;
-  }
-
-  button {
-    width: 50%;
-    color: #fff;
-    background-color: rgb(231, 86, 106);
-    font-size: 1.15rem;
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    padding: 8px;
-    margin: 2rem auto;
-  }
-}
-
-input::placeholder {
-  color: #fff;
-  text-align: center;
-}
-
-.register_form_title {
-  text-align: center;
-  margin-bottom: 3rem;
 }
