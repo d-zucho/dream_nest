@@ -1,34 +1,74 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/register.scss'
 
 const RegisterPage = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    profileImage: null,
+  })
+
+  const handleChange = (e) => {
+    const { name, value, files } = e.target
+    setFormData({
+      ...formData,
+      [name]: value,
+      [name]: name === 'profileImage' ? files[0] : value,
+    })
+  }
+
   return (
     <section className='register'>
       <div className='register_content'>
         <form className='register_content_form'>
           <h1 className='register_form_title'>Register</h1>
           <input
+            onChange={handleChange}
             type='text'
             placeholder='First Name'
             name='firstName'
             required
+            value={formData.firstName}
           />
-          <input type='text' placeholder='Last Name' name='lastName' required />
-          <input type='email' placeholder='Email' name='email' required />
           <input
-            type='password'
-            placeholder='Password'
-            name='password'
+            onChange={handleChange}
+            type='text'
+            value={formData.lastName}
+            placeholder='Last Name'
+            name='lastName'
             required
           />
           <input
+            onChange={handleChange}
+            type='email'
+            placeholder='Email'
+            value={formData.email}
+            name='email'
+            required
+          />
+          <input
+            onChange={handleChange}
             type='password'
+            placeholder='Password'
+            name='password'
+            value={formData.password}
+            required
+          />
+          <input
+            onChange={handleChange}
+            type='password'
+            value={formData.confirmPassword}
             placeholder='Confirm Password'
             name='confirmPassword'
             required
           />
           <input
+            onChange={handleChange}
             type='file'
+            value={formData.profileImage}
             name='profileImage'
             id='profileImage'
             accept='image/*'
